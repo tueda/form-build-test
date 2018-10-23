@@ -1,0 +1,15 @@
+language: generic
+
+services:
+  - docker
+
+matrix:
+  include:
+    - env: TARGET=build IMAGE=debian:stretch VERSION=4.2.0
+    - env: TARGET=devel IMAGE=debian:stretch
+
+install:
+  - ./scripts/travis.sh install
+
+script:
+  - ./scripts/travis.sh script
