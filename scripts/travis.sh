@@ -40,11 +40,11 @@ travis_install() {
   esac
 
   case $TARGET-$IMAGE in
-    build-debian:*)
+    build-debian:*|build-ubuntu:*)
       docker_exec travis_retry sudo apt -q -y update
       docker_exec travis_retry sudo apt -q -y install build-essential libgmp-dev zlib1g-dev
       ;;
-    devel-debian:*)
+    devel-debian:*|devel-ubuntu:*)
       docker_exec travis_retry sudo apt -q -y update
       docker_exec travis_retry sudo apt -q -y install build-essential libgmp-dev zlib1g-dev
       docker_exec travis_retry sudo apt -q -y install automake git ruby

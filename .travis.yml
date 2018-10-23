@@ -5,8 +5,18 @@ services:
 
 matrix:
   include:
+    - env: TARGET=build IMAGE=debian:jessie VERSION=4.2.0
+    - env: TARGET=devel IMAGE=debian:jessie
     - env: TARGET=build IMAGE=debian:stretch VERSION=4.2.0
     - env: TARGET=devel IMAGE=debian:stretch
+    - env: TARGET=build IMAGE=ubuntu:trusty VERSION=4.2.0
+    - env: TARGET=devel IMAGE=ubuntu:trusty
+    - env: TARGET=build IMAGE=ubuntu:xenial VERSION=4.2.0
+    - env: TARGET=devel IMAGE=ubuntu:xenial
+    - env: TARGET=build IMAGE=ubuntu:bionic VERSION=4.2.0
+    - env: TARGET=devel IMAGE=ubuntu:bionic
+    - env: TARGET=build IMAGE=ubuntu:cosmic VERSION=4.2.0
+    - env: TARGET=devel IMAGE=ubuntu:cosmic
 
 install:
   - ./scripts/travis.sh install
