@@ -48,6 +48,21 @@ travis_install() {
       docker_exec travis_retry sudo apt -q -y update
       docker_exec travis_retry sudo apt -q -y install build-essential libgmp-dev zlib1g-dev
       docker_exec travis_retry sudo apt -q -y install automake git ruby
+      ;;
+    build-fedora:*)
+      docker_exec travis_retry sudo dnf -q -y install gcc-c++ gmp-devel make zlib-devel
+      ;;
+    devel-fedora:*)
+      docker_exec travis_retry sudo dnf -q -y install gcc-c++ gmp-devel make zlib-devel
+      docker_exec travis_retry sudo dnf -q -y install automake git ruby rubygem-test-unit
+      ;;
+    build-centos:*)
+      docker_exec travis_retry sudo yum -q -y install gcc-c++ gmp-devel make zlib-devel
+      ;;
+    devel-centos:*)
+      docker_exec travis_retry sudo yum -q -y install gcc-c++ gmp-devel make zlib-devel
+      docker_exec travis_retry sudo yum -q -y install automake git ruby rubygem-minitest
+      ;;
   esac
 }
 
