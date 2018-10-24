@@ -63,6 +63,13 @@ travis_install() {
       docker_exec travis_retry sudo yum -q -y install gcc-c++ gmp-devel make zlib-devel
       docker_exec travis_retry sudo yum -q -y install automake git ruby rubygem-minitest
       ;;
+    build-opensuse/*)
+      docker_exec travis_retry sudo zypper -n install gcc-c++ gmp make zlib
+      ;;
+    devel-opensuse/*)
+      docker_exec travis_retry sudo zypper -n install gcc-c++ gmp make zlib
+      docker_exec travis_retry sudo zypper -n install automake git ruby
+      ;;
   esac
 }
 
