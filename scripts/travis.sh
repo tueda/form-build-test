@@ -57,10 +57,10 @@ travis_install() {
       docker_exec travis_retry sudo dnf -q -y install gcc-c++ gmp-devel make zlib-devel
       docker_exec travis_retry sudo dnf -q -y install automake git ruby rubygem-test-unit
       ;;
-    build-centos:*)
+    build-centos:*|build-cern/slc*)
       docker_exec travis_retry sudo yum -q -y install gcc-c++ gmp-devel make zlib-devel
       ;;
-    devel-centos:*)
+    devel-centos:*|devel-cern/slc*)
       docker_exec travis_retry sudo yum -q -y install gcc-c++ gmp-devel make zlib-devel
       docker_exec travis_retry sudo yum -q -y install automake git ruby rubygem-minitest
       ;;

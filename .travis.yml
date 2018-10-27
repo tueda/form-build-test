@@ -5,26 +5,10 @@ services:
 
 matrix:
   include:
-    - env: TARGET=build IMAGE=debian:jessie VERSION=4.2.0
-    - env: TARGET=devel IMAGE=debian:jessie
-    - env: TARGET=build IMAGE=debian:stretch VERSION=4.2.0
-    - env: TARGET=devel IMAGE=debian:stretch
-    - env: TARGET=build IMAGE=ubuntu:trusty VERSION=4.2.0
-    - env: TARGET=devel IMAGE=ubuntu:trusty
-    - env: TARGET=build IMAGE=ubuntu:xenial VERSION=4.2.0
-    - env: TARGET=devel IMAGE=ubuntu:xenial
-    - env: TARGET=build IMAGE=ubuntu:bionic VERSION=4.2.0
-    - env: TARGET=devel IMAGE=ubuntu:bionic
-    - env: TARGET=build IMAGE=ubuntu:cosmic VERSION=4.2.0
-    - env: TARGET=devel IMAGE=ubuntu:cosmic
-    - env: TARGET=build IMAGE=fedora:27 VERSION=4.2.0
-    - env: TARGET=devel IMAGE=fedora:27
-    - env: TARGET=build IMAGE=fedora:28 VERSION=4.2.0
-    - env: TARGET=devel IMAGE=fedora:28
-    - env: TARGET=build IMAGE=centos:6 VERSION=4.2.0
-    - env: TARGET=devel IMAGE=centos:6
-    - env: TARGET=build IMAGE=centos:7 VERSION=4.2.0
-    - env: TARGET=devel IMAGE=centos:7
+    - env: TARGET=build IMAGE=cern/slc5-base VERSION=4.2.0
+    - env: TARGET=devel IMAGE=cern/slc5-base
+    - env: TARGET=build IMAGE=cern/slc6-base VERSION=4.2.0
+    - env: TARGET=devel IMAGE=cern/slc6-base
 
 install:
   - ./scripts/travis.sh install
