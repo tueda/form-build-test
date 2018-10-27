@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Usage:
-#   travis.sh install
-#   travis.sh script
+#   travis.sh install  # Install required software
+#   travis.sh env      # Print build environment
+#   travis.sh script   # Test the build
 
 set -eu
 set -o pipefail
@@ -66,6 +67,10 @@ travis_install() {
   esac
 }
 
+travis_env() {
+  docker_exec $(pwd)/scripts/print_env.sh
+}
+
 travis_script() {
   case $TARGET-$IMAGE in
     build-*)
@@ -84,7 +89,7 @@ travis_script() {
 }
 
 case "$1" in
-  install|script)
+  install|env|script)
     travis_$1
     ;;
   *)

@@ -30,4 +30,5 @@ install:
   - ./scripts/travis.sh install
 
 script:
+  - ./scripts/travis.sh env
   - ./scripts/travis.sh script
