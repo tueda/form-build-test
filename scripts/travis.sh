@@ -4,9 +4,29 @@
 #   travis.sh install  # Install required software
 #   travis.sh env      # Print build environment
 #   travis.sh script   # Test the build
+#
+# Variables:
+#   VERSION (e.g., 4.2.0, HEAD) or REVISION (<commit-ish>) must be set
 
 set -eu
 set -o pipefail
+
+if [ -n "${VERSION+x}" ]; then
+  if [ -n "${REVISION+x}" ]; then
+    echo "Error: both VERSION and REVISION given" >&2
+    exit 1
+  fi
+  if [ "$VERSION" == HEAD ]; then
+    TARGET=devel
+  else
+    TARGET=release
+  fi
+elif [ -n "${REVISION+x}" ]; then
+  TARGET=devel
+else
+  echo "Error: neither VERSION nor REVISION given" >&2
+  exit 1
+fi
 
 docker_exec() {
   if [ $# -ge 1 ] && [ $1 = sudo ]; then
@@ -26,7 +46,7 @@ travis_install() {
   travis_retry docker run -d --name build_test -v "$(pwd):$(pwd)" "$IMAGE" tail -f /dev/null
 
   case $TARGET-$IMAGE in
-    build-*)
+    release-*)
       travis_retry wget https://github.com/vermaseren/form/releases/download/v$VERSION/form-$VERSION.tar.gz
       tar xfz form-*.tar.gz
       rm form-*.tar.gz
@@ -41,7 +61,7 @@ travis_install() {
   esac
 
   case $TARGET-$IMAGE in
-    build-debian:*|build-ubuntu:*)
+    release-debian:*|release-ubuntu:*)
       docker_exec travis_retry sudo apt -q -y update
       docker_exec travis_retry sudo apt -q -y install build-essential libgmp-dev zlib1g-dev
       ;;
@@ -50,14 +70,14 @@ travis_install() {
       docker_exec travis_retry sudo apt -q -y install build-essential libgmp-dev zlib1g-dev
       docker_exec travis_retry sudo apt -q -y install automake git ruby
       ;;
-    build-fedora:*)
+    release-fedora:*)
       docker_exec travis_retry sudo dnf -q -y install gcc-c++ gmp-devel make zlib-devel
       ;;
     devel-fedora:*)
       docker_exec travis_retry sudo dnf -q -y install gcc-c++ gmp-devel make zlib-devel
       docker_exec travis_retry sudo dnf -q -y install automake git ruby rubygem-test-unit
       ;;
-    build-centos:*)
+    release-centos:*)
       docker_exec travis_retry sudo yum -q -y install gcc-c++ gmp-devel make zlib-devel
       ;;
     devel-centos:*)
@@ -73,7 +93,7 @@ travis_env() {
 
 travis_script() {
   case $TARGET-$IMAGE in
-    build-*)
+    release-*)
       docker_exec ./configure
       docker_exec make
       docker_exec sudo make install
