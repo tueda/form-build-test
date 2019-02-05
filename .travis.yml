@@ -5,25 +5,25 @@ services:
 
 matrix:
   include:
-    - env: IMAGE=debian:jessie  VERSION=4.2.0
+    - env: IMAGE=debian:jessie  VERSION=4.2.1
     - env: IMAGE=debian:jessie  VERSION=HEAD
-    - env: IMAGE=debian:stretch VERSION=4.2.0
+    - env: IMAGE=debian:stretch VERSION=4.2.1
     - env: IMAGE=debian:stretch VERSION=HEAD
-    - env: IMAGE=ubuntu:trusty  VERSION=4.2.0
+    - env: IMAGE=ubuntu:trusty  VERSION=4.2.1
     - env: IMAGE=ubuntu:trusty  VERSION=HEAD
-    - env: IMAGE=ubuntu:xenial  VERSION=4.2.0
+    - env: IMAGE=ubuntu:xenial  VERSION=4.2.1
     - env: IMAGE=ubuntu:xenial  VERSION=HEAD
-    - env: IMAGE=ubuntu:bionic  VERSION=4.2.0
+    - env: IMAGE=ubuntu:bionic  VERSION=4.2.1
     - env: IMAGE=ubuntu:bionic  VERSION=HEAD
-    - env: IMAGE=ubuntu:cosmic  VERSION=4.2.0
+    - env: IMAGE=ubuntu:cosmic  VERSION=4.2.1
     - env: IMAGE=ubuntu:cosmic  VERSION=HEAD
-    - env: IMAGE=fedora:27      VERSION=4.2.0
+    - env: IMAGE=fedora:27      VERSION=4.2.1
     - env: IMAGE=fedora:27      VERSION=HEAD
-    - env: IMAGE=fedora:28      VERSION=4.2.0
+    - env: IMAGE=fedora:28      VERSION=4.2.1
     - env: IMAGE=fedora:28      VERSION=HEAD
-    - env: IMAGE=centos:6       VERSION=4.2.0
+    - env: IMAGE=centos:6       VERSION=4.2.1
     - env: IMAGE=centos:6       VERSION=HEAD
-    - env: IMAGE=centos:7       VERSION=4.2.0
+    - env: IMAGE=centos:7       VERSION=4.2.1
     - env: IMAGE=centos:7       VERSION=HEAD
 
 install:
