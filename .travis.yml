@@ -9,24 +9,30 @@ matrix:
     - env: IMAGE=debian:jessie  VERSION=HEAD
     - env: IMAGE=debian:stretch VERSION=4.2.1
     - env: IMAGE=debian:stretch VERSION=HEAD
-    - env: IMAGE=debian:buster  VERSION=4.2.1
-    - env: IMAGE=debian:buster  VERSION=HEAD
+    - env: IMAGE=debian:latest  VERSION=4.2.1
+    - env: IMAGE=debian:latest  VERSION=HEAD
     - env: IMAGE=ubuntu:trusty  VERSION=4.2.1
     - env: IMAGE=ubuntu:trusty  VERSION=HEAD
     - env: IMAGE=ubuntu:xenial  VERSION=4.2.1
     - env: IMAGE=ubuntu:xenial  VERSION=HEAD
     - env: IMAGE=ubuntu:bionic  VERSION=4.2.1
     - env: IMAGE=ubuntu:bionic  VERSION=HEAD
-    - env: IMAGE=ubuntu:cosmic  VERSION=4.2.1
-    - env: IMAGE=ubuntu:cosmic  VERSION=HEAD
+    - env: IMAGE=ubuntu:rolling VERSION=4.2.1
+    - env: IMAGE=ubuntu:rolling VERSION=HEAD
     - env: IMAGE=fedora:28      VERSION=4.2.1
     - env: IMAGE=fedora:28      VERSION=HEAD
     - env: IMAGE=fedora:29      VERSION=4.2.1
     - env: IMAGE=fedora:29      VERSION=HEAD
+    - env: IMAGE=fedora:30      VERSION=4.2.1
+    - env: IMAGE=fedora:30      VERSION=HEAD
+    - env: IMAGE=fedora:latest  VERSION=4.2.1
+    - env: IMAGE=fedora:latest  VERSION=HEAD
     - env: IMAGE=centos:6       VERSION=4.2.1
     - env: IMAGE=centos:6       VERSION=HEAD
     - env: IMAGE=centos:7       VERSION=4.2.1
     - env: IMAGE=centos:7       VERSION=HEAD
+    - env: IMAGE=centos:latest  VERSION=4.2.1
+    - env: IMAGE=centos:latest  VERSION=HEAD
 
 install:
   - ./scripts/travis.sh install
