@@ -33,6 +33,8 @@ matrix:
     - env: IMAGE=centos:7       VERSION=HEAD
     - env: IMAGE=centos:latest  VERSION=4.2.1
     - env: IMAGE=centos:latest  VERSION=HEAD
+  allow_failures:
+    - env: IMAGE=centos:latest  VERSION=HEAD
 
 install:
   - ./scripts/travis.sh install
